@@ -166,6 +166,28 @@ window.addEventListener(
   { passive: true }
 );
 
+// Touch event handling for mobile
+let touchStartY = 0;
+
+window.addEventListener('touchstart', (event) => {
+  touchStartY = event.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener('touchmove', (event) => {
+  if (isAnimating) return;
+
+  const touchEndY = event.touches[0].clientY;
+  const deltaY = touchStartY - touchEndY;
+
+  if (Math.abs(deltaY) > 30) {
+    const simulatedEvent = { deltaY: deltaY };
+    throttledWheel(simulatedEvent);
+    touchStartY = touchEndY;
+  }
+}, { passive: true });
+
+
+
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
