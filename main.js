@@ -80,6 +80,8 @@ starsTexture.colorSpace = THREE.SRGBColorSpace;
 const starfield = new THREE.Mesh(starfieldGeometry, starfieldMaterial);
 scene.add(starfield);
 
+const sphereMess = [];
+
 const radius = 1.3;
 const segments = 64;
 const rings = 64;
@@ -99,7 +101,7 @@ for (let i = 0; i < 4; i++) {
   const material = new THREE.MeshStandardMaterial({ map: texture });
   const sphere = new THREE.Mesh(geometry, material);
   const angle = ((i + 1) * Math.PI) / 2;
-
+  sphereMess.push(sphere);
   material.needsUpdate = true;
   sphere.position.x = Math.cos(angle) * orbitRadius;
   sphere.position.z = Math.sin(angle) * orbitRadius;
@@ -167,6 +169,9 @@ window.addEventListener(
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
+  for (let i = 0; i < sphereMess.length; i++) {
+    sphereMess[i].rotation.y += 0.0001;
+  }
   renderer.render(scene, camera);
 }
 
