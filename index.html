@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      @font-face {
+        font-family: "Bellina";
+        src: url("./font/bellina.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Planets</title>
+  </head>
+  <body>
+    <div class="relative w-full h-screen overflow-hidden">
+      <div
+        class="absolute top-0 left-0 w-full h-full z-[1] flex justify-center"
+      >
+        <div
+          class="absolute top-[20%] text-white text-center font-['Bellina'] overflow-hidden"
+        >
+          <div class="w-full h-[9em] overflow-hidden">
+            <h1 class="h-full text-9xl tracking-tighter">Earth</h1>
+            <h1 class="h-full text-9xl tracking-tighter">Venus</h1>
+            <h1 class="h-full text-9xl tracking-tighter">Volcanic</h1>
+            <h1 class="h-full text-9xl tracking-tighter">Csilla</h1>
+          </div>
+
+          <div
+            class="h-px bg-gradient-to-r from-transparent via-white to-transparent"
+          ></div>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+      <script type="module" src="./main.js"></script>
+    </div>
+  </body>
+</html>
